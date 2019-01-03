@@ -17,7 +17,7 @@ class Figura(ABC):
     def obwod(self):
         obwod=2*(self.podstawa+self.wysokosc)
         print("Moj obwod wynosi", obwod)
-
+        print(end='\n')
 class Kwadrat(Figura):
     def nazwa_figury(self):
         return "Kwadrat"
@@ -49,19 +49,26 @@ class Trojkat(Figura):
         elif self.typ == "równoboczny":
             obwod=self.podstawa*3
             print("Moj obwod wynosi", obwod)
-
+print(end='\n')
 class Kolo(Figura):
-
-    def __init__(self, nazwa, promien):
-        super().__init__(nazwa)
-        self.promien = promien
 
     def nazwa_figury(self):
         return "Koło"
 
+    def __init__(self, nazwa, podstawa, wysokosc, promien):
+        super().__init__(nazwa, podstawa, wysokosc)
+        self.promien = promien
+
     def opis(self):
-        super().opis()
-        print("Moj promien to: ", self.promien)
+        #super().opis()
+        print(end='\n')
+        print("Jestem", self.nazwa_figury(),"moj promien to: ", self.promien)
+    def pole(self):
+        pole=math.pi*self.promien*self.promien
+        print("Moje pole wynosi", pole)
+    def obwod(self):
+        obwod=2*math.pi*self.promien
+        print("Moj obwod wynosi", obwod)
 
 
 def main():
@@ -81,7 +88,7 @@ def main():
     fig3.pole()
     fig3.obwod()
 
-    fig4 = Kolo("figura4", 3)
+    fig4 = Kolo("figura4", 3, 3, 3)
     fig4.opis()
     fig4.pole()
     fig4.obwod()
